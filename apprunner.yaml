@@ -1,8 +1,15 @@
-version: 1.0
-runtime: python3.9
-build:
-  commands:
+version: 1
+services:
+  app:
+    runtime: python3.8
     build:
-      - docker build -t my-image .
-run:
-  command: docker run -p 80:80 my-image
+      source: .
+      dockerfile: Dockerfile
+    command: ["gunicorn", "app:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker"]
+    port: 8080
+    healthcheck:
+      command: ["curl", "-f", "http://localhost:8080/health"]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+      start_period: 10s
