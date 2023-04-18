@@ -8,11 +8,13 @@ pipeline {
   }
 
   stages {
-    stage('Checkout') {
-      steps {
-        git 'https://github.com/your-github-username/my-python-app.git'
+    stage('Clone Repo') {
+        steps {
+				checkout([$class: 'GitSCM', branches: [[name: '*/master']],
+				doGenerateSubmoduleConfigurations: true, extensions: [],
+				submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'omkarpatel00',
+				url: 'https://github.com/omkarpatel00/my-python-app.git']]])
       }
-    }
 
     stage('Build') {
       steps {
