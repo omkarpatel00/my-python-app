@@ -15,7 +15,7 @@ pipeline {
 				submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'omkarpatel00',
 				url: 'https://github.com/omkarpatel00/my-python-app.git']]])
       }
-
+    }
     stage('Build') {
       steps {
         sh 'docker build -t my-ecr-repo-op .'
@@ -31,5 +31,4 @@ pipeline {
       }
     }
   }
-}
 }
