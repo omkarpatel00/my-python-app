@@ -10,16 +10,9 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/omkarpatel00/my-python-app.git'
+        git 'https://github.com/your-github-username/my-python-app.git'
       }
     }
-   stage('Logging into AWS ECR') {
-      steps {
-         script {
-                  sh 'aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 490167669940.dkr.ecr.ap-southeast-1.amazonaws.com'
-                }
-            }
-        }
 
     stage('Build') {
       steps {
