@@ -3,7 +3,6 @@ runtime: python3.9
 build:
   commands:
     build:
-      - pip install pipenv
-      - pipenv install 
-run: 
-  command: python main.py
+      - docker build -t my-image .
+run:
+  command: docker run -p 80:80 my-image
