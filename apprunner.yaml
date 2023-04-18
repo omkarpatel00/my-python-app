@@ -4,7 +4,7 @@ services:
     source:
       type: git
       repository: https://github.com/omkarpatel00/my-python-app.git
-      subdirectory: my-python-app
+      subdirectory: myapp
     build:
       command: pip install -r requirements.txt
       runtime: python3.9
