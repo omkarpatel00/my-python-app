@@ -8,12 +8,12 @@ pipeline {
   }
 
   stages {
-    stage('Clone Repo') {
-        steps {
-		checkout([$class: 'GitSCM', branches: [[name: '*/master']],
-		doGenerateSubmoduleConfigurations: true, extensions: [],
-		submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'omkarpatel00',
-		url: 'https://github.com/omkarpatel00/my-python-app.git']]])
+	stage('Checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [ url: 'https://github.com/aakashsehgal/FMU.git']])
+                sh "ls -lart ./*"
+            }
+        }  
        }
     }
     stage('Build') {
