@@ -14,12 +14,11 @@ pipeline {
                 sh "ls -lart ./*"
             }
         }  
-    }
       stage('Build') {
             steps {
             sh 'docker build -t my-ecr-repo-op .'
+            }
         }
-    }
   
       stage('Push to ECR') {
         steps {
@@ -27,6 +26,7 @@ pipeline {
             sh "aws ecr get-login --region ap-southeast-1"
             sh "docker tag my-ecr-repo-op:latest 490167669940.dkr.ecr.ap-southeast-1.amazonaws.com/my-ecr-repo-op:latest"
             sh "docker push 490167669940.dkr.ecr.ap-southeast-1.amazonaws.com/my-ecr-repo-op:latest"
+            }
             }
         }
     }
