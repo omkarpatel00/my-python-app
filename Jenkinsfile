@@ -10,11 +10,11 @@ pipeline {
   stages {
     stage('Clone Repo') {
         steps {
-				checkout([$class: 'GitSCM', branches: [[name: '*/master']],
-				doGenerateSubmoduleConfigurations: true, extensions: [],
-				submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'omkarpatel00',
-				url: 'https://github.com/omkarpatel00/my-python-app.git']]])
-      }
+		checkout([$class: 'GitSCM', branches: [[name: '*/master']],
+		doGenerateSubmoduleConfigurations: true, extensions: [],
+		submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'omkarpatel00',
+		url: 'https://github.com/omkarpatel00/my-python-app.git']]])
+       }
     }
     stage('Build') {
       steps {
@@ -25,8 +25,8 @@ pipeline {
     stage('Push to ECR') {
       steps {
         script {
-            sh "docker tag my-ecr-repo-op:latest 490167669940.dkr.ecr.ap-southeast-1.amazonaws.com/my-ecr-repo-op:latest"
-            sh "docker push 490167669940.dkr.ecr.ap-southeast-1.amazonaws.com/my-ecr-repo-op:latest"
+            sh "docker tag my-ecr-repo-op:python 490167669940.dkr.ecr.ap-southeast-1.amazonaws.com/my-ecr-repo-op:python"
+            sh "docker push 490167669940.dkr.ecr.ap-southeast-1.amazonaws.com/my-ecr-repo-op:python"
         }
       }
     }
