@@ -5,7 +5,7 @@ pipeline {
       APP_NAME = 'my-python-app'
       ECR_REPO = 'my-ecr-repo'
       ECR_REGION = 'ap-southeast-1'
-      APP = 'Java-App'
+      APP = 'Python-App'
     }
   
     stages {
